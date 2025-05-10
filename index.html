@@ -247,6 +247,41 @@
     </div>
   </div>
 
+  <!-- Date Invitation Section (hidden by default) -->
+<div id="dateInvitation" style="display: none; text-align: center; margin-top: 50px;">
+  <h2 style="font-size: 2.5em; color: #ff7f9f; animation: fadeIn 2s ease-in-out;">I have a question for you...</h2>
+  <p style="font-size: 1.5em; animation: fadeIn 3s ease-in-out;">
+    Will you go on a date with me? 💖
+    <br><br>
+    Ase hi want to create more memories with you, to look upon later.
+  </p>
+  <div class="image-container" style="animation: fadeIn 4s ease-in-out;">
+    <img src="romantic.jpg" alt="Romantic Location" style="max-width: 300px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+  </div>
+  <button onclick="confirmDate()" style="background-color: #ff5a5f; color: white; border: none; padding: 15px 30px; font-size: 1.2em; cursor: pointer; border-radius: 5px; margin-top: 30px;">
+    Yes, I’ll go on a date with you! 💖
+  </button>
+</div>
+
+<!-- Button to reveal date invitation -->
+<button class="reveal-btn" onclick="showDateInvitation()">Click to see my invitation</button>
+
+<script>
+  function showDateInvitation() {
+    var dateInvitation = document.getElementById("dateInvitation");
+    dateInvitation.style.display = "none";
+    dateInvitation.offsetHeight; // trigger reflow
+    dateInvitation.style.display = "block";
+    dateInvitation.style.animation = "none"; // reset animation
+    dateInvitation.offsetHeight; // trigger reflow
+    dateInvitation.style.animation = "fadeIn 2s ease-out forwards"; // apply animation
+  }
+
+  function confirmDate() {
+    alert("I’m so excited! Can’t wait to spend the day with you. 💕");
+  }
+</script>
+
   <!-- Background Music -->
   <audio autoplay loop>
     <source src="your-music.mp3" type="audio/mp3">
