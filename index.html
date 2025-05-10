@@ -110,6 +110,58 @@
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+
+    /* Gallery Thumbnails */
+    .gallery-thumbnails {
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      padding: 20px;
+    }
+
+    .gallery-thumbnails img {
+      width: 120px;
+      height: 120px;
+      margin: 0 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-thumbnails img:hover {
+      transform: scale(1.1); /* Zoom effect on hover */
+    }
+
+    /* Gallery Section */
+    .gallery-section {
+      padding: 50px 10px;
+      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+      color: white;
+    }
+    .gallery-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Gallery images styling */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+    .gallery-container img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-container img:hover {
+      transform: scale(1.05); /* Zoom effect on hover */
+    }
   </style>
 </head>
 <body>
@@ -153,6 +205,28 @@
     <div class="image-container">
       <!-- Replace with your small PNG or GIF image link -->
       <img src="your-image.gif" alt="Romantic Image">
+    </div>
+  </div>
+
+    <!-- Scrollable Thumbnails -->
+  <div class="gallery-thumbnails">
+    <!-- Replace these with small thumbnails of your images -->
+    <img src="image1.jpg" alt="Memory 1" onclick="openGallery()">
+    <img src="image2.jpg" alt="Memory 2" onclick="openGallery()">
+    <img src="image3.jpg" alt="Memory 3" onclick="openGallery()">
+    <img src="image4.jpg" alt="Memory 4" onclick="openGallery()">
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery-section">
+    <h2>Our Special Moments 💖</h2>
+    <div class="gallery-container">
+      <!-- Replace these image paths with your own photos -->
+      <img src="image1.jpg" alt="Memory 1">
+      <img src="image2.jpg" alt="Memory 2">
+      <img src="image3.jpg" alt="Memory 3">
+      <img src="image4.jpg" alt="Memory 4">
+      <!-- Add as many images as you'd like -->
     </div>
   </div>
 
