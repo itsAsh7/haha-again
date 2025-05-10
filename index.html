@@ -90,7 +90,7 @@
   </p>
 
   <!-- Button to Reveal Love Letter -->
-  <button class="reveal-btn" onclick="showLetter()">Click to Read My Love Letter</button>
+  <button class="reveal-btn" onclick="showLoveLetter()">Click to Read My Love Letter</button>
 
   <!-- Love Letter (Initially Hidden) -->
   <div id="loveLetter">
@@ -122,10 +122,17 @@
   <!-- Script to Reveal Love Letter -->
   <script>
     function showLoveLetter() {
-      // This will trigger the fade-in effect
       var loveLetter = document.getElementById("loveLetter");
+      
+      // First hide the letter and reset the animation
+      loveLetter.style.display = "none";
+      loveLetter.offsetHeight; // Trigger reflow to restart the animation
+
+      // Now show it and apply fade-in effect
       loveLetter.style.display = "block";
-      loveLetter.style.animation = "fadeInLetter 2s ease-out forwards";
+      loveLetter.style.animation = "none"; // Reset the animation
+      loveLetter.offsetHeight; // Trigger reflow again
+      loveLetter.style.animation = "fadeInLetter 2s ease-out forwards"; // Start the animation
     }
   </script>
 </body>
