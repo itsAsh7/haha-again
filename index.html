@@ -6,251 +6,177 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
       font-family: 'Segoe UI', sans-serif;
-      color: white;
-      text-align: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-    h1 {
-      margin-top: 150px;
-      font-size: 3em;
-      animation: fadeIn 2s ease-in-out;
-      font-family: 'Georgia', serif;
-    }
-    .heart {
-      font-size: 5em;
-      color: red;
-      animation: beat 1s infinite;
-    }
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      background: #fff0f5;
+      color: #333;
+      overflow-x: hidden;
     }
 
-    /* Button styling */
-    .reveal-btn {
-      background-color: #ff5a5f;
+    .centered {
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .fade {
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes fadeInFull {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .main-btn {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #ff5a7d;
       color: white;
       border: none;
-      padding: 15px 30px;
-      font-size: 1.2em;
+      border-radius: 10px;
       cursor: pointer;
-      border-radius: 5px;
-      margin-top: 30px;
-      transition: background-color 0.3s ease;
-      font-family: 'Arial', sans-serif;
-    }
-    .reveal-btn:hover {
-      background-color: #ff2b2f;
+      margin-top: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    /* Full-screen Fade-in effect for love letter */
+    /* Love Letter */
     #loveLetter {
       display: none;
-      font-size: 1.5em;
-      line-height: 1.8;
-      max-width: 100%;
-      height: 100%;
-      text-align: center;
-      padding: 50px;
-      background: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
-      color: white;
-      position: fixed; /* Fixed to cover the full screen */
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0; /* Initially invisible */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff0f8;
+      padding: 40px;
+      z-index: 1000;
       overflow-y: auto;
-      font-family: 'Georgia', serif;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       animation: fadeInFull 2s ease-out forwards;
+      text-align: center;
     }
 
-    /* Full-screen Fade-in effect */
-    @keyframes fadeInFull {
-      from {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    #loveLetter p {
+      font-size: 1.2em;
+      line-height: 1.6em;
+      white-space: pre-wrap;
+      margin-bottom: 30px;
     }
 
-    /* Beautiful letter style */
-    .love-letter {
-      font-size: 1.3em;
-      font-style: italic;
-      line-height: 2;
-      letter-spacing: 0.5px;
-      padding: 20px;
+    #loveGif {
+      width: 150px;
+      margin-bottom: 30px;
     }
 
-    /* Styling for small image below the letter */
-    .image-container {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .image-container img {
-      max-width: 200px; /* Small image size */
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Gallery Thumbnails */
-    .gallery-thumbnails {
-      display: flex;
-      justify-content: center;
-      overflow-x: auto;
-      padding: 20px;
-    }
-
-    .gallery-thumbnails img {
-      width: 120px;
-      height: 120px;
-      margin: 0 10px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-thumbnails img:hover {
-      transform: scale(1.1); /* Zoom effect on hover */
-    }
-
-    /* Gallery Section */
-    .gallery-section {
-      padding: 50px 10px;
-      background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    /* Gallery Overlay */
+    #galleryOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.95);
       color: white;
+      padding: 50px 20px;
+      z-index: 9999;
+      text-align: center;
+      animation: fadeInFull 2s ease-out forwards;
+      overflow-y: auto;
     }
-    .gallery-section h2 {
+
+    #galleryOverlay h2 {
       font-size: 2.5em;
       margin-bottom: 30px;
-      animation: fadeIn 2s ease-in-out;
     }
 
-    /* Gallery images styling */
-    .gallery-container {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      justify-items: center;
+      padding: 0 10px;
     }
-    .gallery-container img {
+
+    .gallery-grid img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      cursor: pointer;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease;
     }
 
-    .gallery-container img:hover {
-      transform: scale(1.05); /* Zoom effect on hover */
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      padding: 12px 25px;
+      background-color: #ff5a7d;
+      border: none;
+      color: white;
+      font-size: 1.1em;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 <body>
-  <!-- Welcome Message -->
-  <div class="heart">❤️</div>
-  <h1>Aj ahi 7/5/2025...</h1>
-  <p style="font-size: 1.5em; max-width: 600px; margin: 20px auto; animation: fadeIn 3s ease-in-out;">
-    And you are khfa from me...  
-    Well, yes — hona bhi chahiye.  
-    <br><br>
-    Let me try to make you feel...  
-    what I feel about you. ❤️
-  </p>
 
-  <!-- Button to Reveal Love Letter -->
-  <button class="reveal-btn" onclick="showLoveLetter()">Click to Read My Love Letter</button>
+  <div class="centered fade" id="welcome">
+    <h1>Hey My Love 💌</h1>
+    <p>Aj ahi 7/5/2025.... and u are khfa from me... well yess hona bhi chahiye<br>
+    Let me try to do make u feel.....what i feel about you</p>
+    <button class="main-btn" onclick="showLoveLetter()">Read My Heart ❤️</button>
+  </div>
 
-  <!-- Full-Screen Love Letter (Initially Hidden) -->
+  <!-- Love Letter -->
   <div id="loveLetter">
-    <div class="love-letter">
-      <p>Tooooo hum kinda weird situation mai hai.... yss and mri glti hai....  
-      i was the one who didn't fix it.  
-      <br><br>
-      But it's hard without you, tumhara value kuch aur hai, mrese replace na hua ja rha.  
-      I myself don't want to get replaced, sad ho jata sochke hi.  
-      <br><br>
-      I do mistakes, but can sure you mrese jyada nahi kr skta tumse pyaar koi,  
-      I want ur good bas even if it leads to pain and that's why i can fix everything to hold you in my life,  
-      if you just let this Ash do it.  
-      <br><br>
-      Mre imagination aur koi nahi ata... its always you, pyar, care, daat khana, maarkhana,  
-      aur bhohot kuch, can only think with you.  
-      I don't know tum kya sochti per that's it.  
-      <br><br>
-      I just LOVE YOU too every extend... and i want urs tooo  
-      <br><br>
-      ~~by Ash</p>
-    </div>
+    <p>
+Tooooo hum kinda wierd situation mai hai.... yss and mri glti hai.... i was the one who didint fixed it.
+But its hard without you , tumhara value kuch aur hai, mrese replace na hua ja rha. I myself dont want to get replaced, sad ho jata sochke hi.
+I do mistaked, but can sure you mrese jyada nahi kr skta tumse pyaar koi, i want ur good bas even if it leads to pain and thats why i can fix everything to hold you in my life, if you just let this Ash do it.
 
-    <!-- Small Image below the love letter -->
-    <div class="image-container">
-      <!-- Replace with your small PNG or GIF image link -->
-      <img src="your-image.gif" alt="Romantic Image">
-    </div>
+Mre imagination aur koi nahi ata... its always you, pyar, , care, daat khana, maarkhana,  aur bhohot kuch, can only think with you. I dont know tum kya sochti per thats it
+
+I just LOVE YOU too every extend...... and i want urs tooo
+
+                                                                   ~~by Ash
+    </p>
+    <img src="love.gif" alt="Cute Love" id="loveGif">
+    <br>
+    <button class="main-btn" onclick="openGallery()">💫 Our Moments Together</button>
   </div>
 
-    <!-- Scrollable Thumbnails -->
-  <div class="gallery-thumbnails">
-    <!-- Replace these with small thumbnails of your images -->
-    <img src="image1.jpg" alt="Memory 1" onclick="openGallery()">
-    <img src="image2.jpg" alt="Memory 2" onclick="openGallery()">
-    <img src="image3.jpg" alt="Memory 3" onclick="openGallery()">
-    <img src="image4.jpg" alt="Memory 4" onclick="openGallery()">
-  </div>
-
-  <!-- Gallery Section -->
-  <div class="gallery-section">
-    <h2>Our Special Moments 💖</h2>
-    <div class="gallery-container">
-      <!-- Replace these image paths with your own photos -->
-      <img src="image1.jpg" alt="Memory 1">
-      <img src="image2.jpg" alt="Memory 2">
-      <img src="image3.jpg" alt="Memory 3">
-      <img src="image4.jpg" alt="Memory 4">
-      <!-- Add as many images as you'd like -->
+  <!-- Gallery Overlay -->
+  <div id="galleryOverlay">
+    <h2>Our Special Memories 💞</h2>
+    <div class="gallery-grid">
+      <!-- Replace with your actual image paths -->
+      <img src="photo1.jpg" alt="Moment 1">
+      <img src="photo2.jpg" alt="Moment 2">
+      <img src="photo3.jpg" alt="Moment 3">
+      <img src="photo4.jpg" alt="Moment 4">
     </div>
+    <button class="back-btn" onclick="closeGallery()">⬅ Back</button>
   </div>
 
-  <!-- Background Music -->
-  <audio autoplay loop>
-    <source src="your-music.mp3" type="audio/mp3">
-    Your browser does not support the audio tag.
-  </audio>
-
-  <!-- Script to Reveal Full-Screen Love Letter -->
   <script>
     function showLoveLetter() {
-      var loveLetter = document.getElementById("loveLetter");
-      
-      // First hide the letter and reset the animation
-      loveLetter.style.display = "none";
-      loveLetter.offsetHeight; // Trigger reflow to restart the animation
+      document.getElementById("welcome").style.display = "none";
+      const letter = document.getElementById("loveLetter");
+      letter.style.display = "block";
+    }
 
-      // Now show it and apply fade-in effect
-      loveLetter.style.display = "block";
-      loveLetter.style.animation = "none"; // Reset the animation
-      loveLetter.offsetHeight; // Trigger reflow again
-      loveLetter.style.animation = "fadeInFull 2s ease-out forwards"; // Start the animation
+    function openGallery() {
+      document.getElementById("galleryOverlay").style.display = "block";
+      document.getElementById("loveLetter").style.display = "none";
+    }
+
+    function closeGallery() {
+      document.getElementById("galleryOverlay").style.display = "none";
+      document.getElementById("loveLetter").style.display = "block";
     }
   </script>
+
 </body>
 </html>
