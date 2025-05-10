@@ -18,6 +18,7 @@
       margin-top: 150px;
       font-size: 3em;
       animation: fadeIn 2s ease-in-out;
+      font-family: 'Georgia', serif;
     }
     .heart {
       font-size: 5em;
@@ -44,6 +45,7 @@
       border-radius: 5px;
       margin-top: 30px;
       transition: background-color 0.3s ease;
+      font-family: 'Arial', sans-serif;
     }
     .reveal-btn:hover {
       background-color: #ff2b2f;
@@ -52,13 +54,13 @@
     /* Full-screen Fade-in effect for love letter */
     #loveLetter {
       display: none;
-      font-size: 2em;
+      font-size: 1.5em;
       line-height: 1.8;
       max-width: 100%;
       height: 100%;
-      text-align: left;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.8); /* Dark background for contrast */
+      text-align: center;
+      padding: 50px;
+      background: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
       color: white;
       position: fixed; /* Fixed to cover the full screen */
       top: 0;
@@ -67,6 +69,9 @@
       height: 100%;
       opacity: 0; /* Initially invisible */
       overflow-y: auto;
+      font-family: 'Georgia', serif;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       animation: fadeInFull 2s ease-out forwards;
     }
 
@@ -74,10 +79,21 @@
     @keyframes fadeInFull {
       from {
         opacity: 0;
+        transform: translateY(50px);
       }
       to {
         opacity: 1;
+        transform: translateY(0);
       }
+    }
+
+    /* Beautiful letter style */
+    .love-letter {
+      font-size: 1.3em;
+      font-style: italic;
+      line-height: 2;
+      letter-spacing: 0.5px;
+      padding: 20px;
     }
 
   </style>
@@ -85,7 +101,7 @@
 <body>
   <!-- Welcome Message -->
   <div class="heart">❤️</div>
-  <h1>hey praps, Aj hai 7/5/2025...</h1>
+  <h1>Aj ahi 7/5/2025...</h1>
   <p style="font-size: 1.5em; max-width: 600px; margin: 20px auto; animation: fadeIn 3s ease-in-out;">
     And you are khfa from me...  
     Well, yes — hona bhi chahiye.  
@@ -99,23 +115,25 @@
 
   <!-- Full-Screen Love Letter (Initially Hidden) -->
   <div id="loveLetter">
-    <p>Tooooo hum kinda weird situation mai hai.... yss and mri glti hai....  
-    i was the one who didn't fix it.  
-    <br><br>
-    But it's hard without you, u got different position, mrese replace na hua ja rha.  
-    I myself don't want to get replaced, sad ho jata sochke hi.  
-    <br><br>
-    I do mistakes, but can sure you mrese jyada nahi kr skta tumse pyaar koi,  
-    I want ur good bas even if it leads to pain and that's why i can fix everything to hold you in my life,  
-    if you just let this Ash do it.  
-    <br><br>
-    Mre imagination aur koi nahi ata... its always you, pyar, care, daat khana, maarkhana,  
-    aur bhohot kuch, can only think with you.  
-    I don't know tum kya sochti per that's it.  
-    <br><br>
-    I just LOVE YOU too every extend... and i want urs tooo  
-    <br><br>
-    ~~by Ash</p>
+    <div class="love-letter">
+      <p>Tooooo hum kinda weird situation mai hai.... yss and mri glti hai....  
+      i was the one who didn't fix it.  
+      <br><br>
+      But it's hard without you, tumhara value kuch aur hai, mrese replace na hua ja rha.  
+      I myself don't want to get replaced, sad ho jata sochke hi.  
+      <br><br>
+      I do mistakes, but can sure you mrese jyada nahi kr skta tumse pyaar koi,  
+      I want ur good bas even if it leads to pain and that's why i can fix everything to hold you in my life,  
+      if you just let this Ash do it.  
+      <br><br>
+      Mre imagination aur koi nahi ata... its always you, pyar, care, daat khana, maarkhana,  
+      aur bhohot kuch, can only think with you.  
+      I don't know tum kya sochti per that's it.  
+      <br><br>
+      I just LOVE YOU too every extend... and i want urs tooo  
+      <br><br>
+      ~~by Ash</p>
+    </div>
   </div>
 
   <!-- Background Music -->
