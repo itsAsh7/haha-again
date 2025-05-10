@@ -49,24 +49,29 @@
       background-color: #ff2b2f;
     }
 
-    /* Fade-in animation for love letter */
+    /* Full-screen Fade-in effect for love letter */
     #loveLetter {
       display: none;
-      font-size: 1.2em;
+      font-size: 2em;
       line-height: 1.8;
-      max-width: 800px;
-      margin: 40px auto;
+      max-width: 100%;
+      height: 100%;
       text-align: left;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.8); /* Dark background for contrast */
+      color: white;
+      position: fixed; /* Fixed to cover the full screen */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       opacity: 0; /* Initially invisible */
-      animation: fadeInLetter 2s ease-out forwards;
+      overflow-y: auto;
+      animation: fadeInFull 2s ease-out forwards;
     }
 
-    /* Fade-in effect */
-    @keyframes fadeInLetter {
+    /* Full-screen Fade-in effect */
+    @keyframes fadeInFull {
       from {
         opacity: 0;
       }
@@ -80,7 +85,7 @@
 <body>
   <!-- Welcome Message -->
   <div class="heart">❤️</div>
-  <h1>Aj ahi 7/5/2025...</h1>
+  <h1>hey praps, Aj hai 7/5/2025...</h1>
   <p style="font-size: 1.5em; max-width: 600px; margin: 20px auto; animation: fadeIn 3s ease-in-out;">
     And you are khfa from me...  
     Well, yes — hona bhi chahiye.  
@@ -92,12 +97,12 @@
   <!-- Button to Reveal Love Letter -->
   <button class="reveal-btn" onclick="showLoveLetter()">Click to Read My Love Letter</button>
 
-  <!-- Love Letter (Initially Hidden) -->
+  <!-- Full-Screen Love Letter (Initially Hidden) -->
   <div id="loveLetter">
     <p>Tooooo hum kinda weird situation mai hai.... yss and mri glti hai....  
     i was the one who didn't fix it.  
     <br><br>
-    But it's hard without you, tumhara value kuch aur hai, mrese replace na hua ja rha.  
+    But it's hard without you, u got different position, mrese replace na hua ja rha.  
     I myself don't want to get replaced, sad ho jata sochke hi.  
     <br><br>
     I do mistakes, but can sure you mrese jyada nahi kr skta tumse pyaar koi,  
@@ -119,7 +124,7 @@
     Your browser does not support the audio tag.
   </audio>
 
-  <!-- Script to Reveal Love Letter -->
+  <!-- Script to Reveal Full-Screen Love Letter -->
   <script>
     function showLoveLetter() {
       var loveLetter = document.getElementById("loveLetter");
@@ -132,7 +137,7 @@
       loveLetter.style.display = "block";
       loveLetter.style.animation = "none"; // Reset the animation
       loveLetter.offsetHeight; // Trigger reflow again
-      loveLetter.style.animation = "fadeInLetter 2s ease-out forwards"; // Start the animation
+      loveLetter.style.animation = "fadeInFull 2s ease-out forwards"; // Start the animation
     }
   </script>
 </body>
