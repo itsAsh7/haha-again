@@ -72,6 +72,7 @@
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
       animation: fadeInFull 2s ease-out forwards;
+      z-index: 1000;
     }
 
     @keyframes fadeInFull {
@@ -169,6 +170,26 @@
     .close-gallery:hover {
       background-color: #ff2b2f;
     }
+
+    /* Fullscreen Date Invitation */
+    .invitation-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      font-family: 'Georgia', serif;
+      font-size: 1.5em;
+      line-height: 1.8;
+      text-align: center;
+      padding: 50px 20px;
+      overflow-y: auto;
+      z-index: 1000;
+      animation: fadeInFull 2s ease-out forwards;
+    }
   </style>
 </head>
 <body>
@@ -218,18 +239,15 @@
 
     <!-- Button to show gallery -->
     <div style="margin-top: 30px;">
-      <button onclick="showGallery()" style="
-        background-color: #ff7f9f;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        font-size: 1.1em;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        transition: background-color 0.3s ease;
-      ">
+      <button onclick="showGallery()" style="background-color: #ff7f9f; color: white; border: none; padding: 12px 25px; font-size: 1.1em; border-radius: 10px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: background-color 0.3s ease;">
         💫 Our Moments Together
+      </button>
+    </div>
+
+    <!-- Button to show date invite -->
+    <div style="margin-top: 20px;">
+      <button onclick="showDateInvitation()" style="background-color: #ff9f7f; color: white; border: none; padding: 12px 25px; font-size: 1.1em; border-radius: 10px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: background-color 0.3s ease;">
+        💌 Special Date Invite
       </button>
     </div>
   </div>
@@ -239,7 +257,6 @@
     <button class="close-gallery" onclick="closeGallery()">Close Gallery</button>
     <h2>Our Special Moments 💖</h2>
     <div class="gallery-container">
-      <!-- Replace with your own images -->
       <img src="photo1.jpg" alt="Memory 1">
       <img src="photo2.jpg" alt="Memory 2">
       <img src="photo3.jpg" alt="Memory 3">
@@ -247,40 +264,20 @@
     </div>
   </div>
 
-  <!-- Date Invitation Section (hidden by default) -->
-<div id="dateInvitation" style="display: none; text-align: center; margin-top: 50px;">
-  <h2 style="font-size: 2.5em; color: #ff7f9f; animation: fadeIn 2s ease-in-out;">I have a question for you...</h2>
-  <p style="font-size: 1.5em; animation: fadeIn 3s ease-in-out;">
-    Will you go on a date with me? 💖
-    <br><br>
-    Ase hi want to create more memories with you, to look upon later.
-  </p>
-  <div class="image-container" style="animation: fadeIn 4s ease-in-out;">
-    <img src="romantic.jpg" alt="Romantic Location" style="max-width: 300px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+  <!-- Date Invitation Fullscreen Section -->
+  <div class="invitation-screen" id="dateInvitation">
+    <h2 style="font-size: 2.5em; color: #ff7f9f;">I have a question for you...</h2>
+    <p style="font-size: 1.5em; margin-top: 20px;">
+      Will you go on a date with me? 💖<br><br>
+      Ase hi want to create more memories with you, to look upon later.
+    </p>
+    <div class="image-container" style="margin-top: 30px;">
+      <img src="romantic.jpg" alt="Romantic Location" style="max-width: 300px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+    </div>
+    <button onclick="confirmDate()" style="background-color: #ff5a5f; color: white; border: none; padding: 15px 30px; font-size: 1.2em; cursor: pointer; border-radius: 5px; margin-top: 30px;">
+      Yes, I’ll go on a date with you! 💖
+    </button>
   </div>
-  <button onclick="confirmDate()" style="background-color: #ff5a5f; color: white; border: none; padding: 15px 30px; font-size: 1.2em; cursor: pointer; border-radius: 5px; margin-top: 30px;">
-    Yes, I’ll go on a date with you! 💖
-  </button>
-</div>
-
-<!-- Button to reveal date invitation -->
-<button class="reveal-btn" onclick="showDateInvitation()">Click to see my invitation</button>
-
-<script>
-  function showDateInvitation() {
-    var dateInvitation = document.getElementById("dateInvitation");
-    dateInvitation.style.display = "none";
-    dateInvitation.offsetHeight; // trigger reflow
-    dateInvitation.style.display = "block";
-    dateInvitation.style.animation = "none"; // reset animation
-    dateInvitation.offsetHeight; // trigger reflow
-    dateInvitation.style.animation = "fadeIn 2s ease-out forwards"; // apply animation
-  }
-
-  function confirmDate() {
-    alert("I’m so excited! Can’t wait to spend the day with you. 💕");
-  }
-</script>
 
   <!-- Background Music -->
   <audio autoplay loop>
@@ -288,9 +285,10 @@
     Your browser does not support the audio tag.
   </audio>
 
+  <!-- JavaScript -->
   <script>
     function showLoveLetter() {
-      var loveLetter = document.getElementById("loveLetter");
+      const loveLetter = document.getElementById("loveLetter");
       loveLetter.style.display = "none";
       loveLetter.offsetHeight;
       loveLetter.style.display = "block";
@@ -300,14 +298,28 @@
     }
 
     function showGallery() {
-      var gallery = document.getElementById("gallerySection");
+      const gallery = document.getElementById("gallerySection");
       gallery.style.display = "block";
       gallery.style.animation = "fadeGallery 1.5s ease forwards";
     }
 
     function closeGallery() {
-      var gallery = document.getElementById("gallerySection");
+      const gallery = document.getElementById("gallerySection");
       gallery.style.display = "none";
+    }
+
+    function showDateInvitation() {
+      const dateInvitation = document.getElementById("dateInvitation");
+      dateInvitation.style.display = "none";
+      dateInvitation.offsetHeight;
+      dateInvitation.style.display = "block";
+      dateInvitation.style.animation = "none";
+      dateInvitation.offsetHeight;
+      dateInvitation.style.animation = "fadeInFull 2s ease-out forwards";
+    }
+
+    function confirmDate() {
+      alert("I’m so excited! Can’t wait to spend the day with you. 💕");
     }
   </script>
 
